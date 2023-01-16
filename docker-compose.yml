@@ -8,6 +8,14 @@ services:
       POSTGRES_DB: mydb
     ports:
       - "5432:5432"
+  hasura:
+    image: hasura/graphql-engine:latest
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://myuser:mypassword@db:5432/mydb
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
   web:
     build: .
     command: python run.py
@@ -16,4 +24,4 @@ services:
     ports:
       - "5000:5000"
     depends_on:
-      - db
+      - hasura
