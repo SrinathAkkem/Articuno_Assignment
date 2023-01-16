@@ -13,3 +13,9 @@
 
 ### Run API
 ```python run.py```
+
+### Start Containers
+```docker-compose up```
+
+### Run Commands Inside Container
+```docker-compose exec container_name command```
